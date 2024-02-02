@@ -1,0 +1,7 @@
+model:
+  repo_id: "itsdotscience/Magicoder-S-DS-6.7B-GGUF"
+  prefix: "Magicoder-S-DS-6.7B"
+  variant: "q8_0"
+  context_length: 0
+  verbose: False
+
