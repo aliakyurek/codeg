@@ -38,9 +38,9 @@ Whether large of short text is given, higher context length will result lower pe
 * Select a language
 * Describe the task. 
   * You can also try the provided examples by clicking them.
-* Click "Go".
-
-* ![Image](static/images/img_01.png)
+* Click "Go".<br>
+![Image](static/images/img_01.png)
+* Application will 
 ### Improvement Screen
 * Application will use the selected LLM to generate code for the given task and language.
 * When doing this, the description and code will be in seperated panels.
