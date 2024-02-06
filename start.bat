@@ -1,5 +1,6 @@
 @echo off
 
+setlocal enabledelayedexpansion
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo Python is not installed.
@@ -17,8 +18,8 @@ for /f "tokens=3 delims=. " %%B in ("%python_version%") do (
     set "minor_version=%%B"
 )
 set "python_version_combined=%major_version%%minor_version%"
-echo %python_version_combined%
 rem Check if the version is at least 3.10
+
 if %python_version_combined% lss 310 (
     echo Python version is below 3.10. Please update.
     exit /b
@@ -41,14 +42,14 @@ if not exist "%VENV_PATH%" (
 
     REM Install required packages using pip
     pip install -r requirements.txt
-
-    set llama_win_wheel=https://github.com/abetlen/llama-cpp-python/releases/download/v0.2.28/llama_cpp_python-0.2.28-cp%python_version_combined%-cp%python_version_combined%-win_amd64.whl
-    pip install %llama_win_wheel%
+    set llama_win_wheel=https://github.com/abetlen/llama-cpp-python/releases/download/v0.2.28/llama_cpp_python-0.2.28-cp!python_version_combined!-cp!python_version_combined!-win_amd64.whl
+    pip install !llama_win_wheel!
 
     echo Virtual environment "%VENV_NAME%" has been created, dependencies installed and activated.
     echo.
 ) else (
     REM Activate the virtual environment
+    echo Activating the virtual environment.
     call %VENV_PATH%\Scripts\activate.bat
 )
 echo Starting application.
